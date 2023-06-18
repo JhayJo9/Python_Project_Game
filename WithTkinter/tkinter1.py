@@ -6,16 +6,6 @@ gui = Tk()
 gui.title("Guessing Game")
 gui.geometry("600x600")
 score = 0
-def user_answer():
-    score_user() # calling the function to show the score
-    ans = user_entry.get().lower()
-    if ans == collectionsOfImage[random_1]:
-           messagebox.showinfo("Great", "You got the right answer\n\t" + user_entry.get())
-           scoring() # calling the function to increment the score
-           Images_list() # everytime the condtion is true the new image will appear
-    else:
-        messagebox.askretrycancel("Wrong", "Try again")
-       
 def Images_list():
     next_imgs() # calling function to generate new images from list
     score_user()
@@ -33,7 +23,7 @@ def Images_list():
                         'rias','rimuru','sakuragi','asta','baki','eren','gintoki','gon','hinata',
                         'izumi','shin','takumi','arata','bakugo','haruki','hiro','issei','kaori',
                         'kousei','levi','lilith','mai','mikasa','mitsuha','sakura','yukihira','yuu'
-                        ,'garp','anya']
+                        ,'garp','anya','law','hancock','kaido','luffy','nami','zoro','robin']
     random_1 = randint(0, len(collectionsOfImage)-1) # using random to randomize the images
     anime = "images/" + collectionsOfImage[random_1] + ".png"
     anime_images = ImageTk.PhotoImage(Image.open((anime))) # perfect
@@ -58,6 +48,16 @@ def score_user():
     lbl_score.config(bg="#001f3f")
     lbl_score.place(x=330,y=495)
     #score+=1
+def user_answer():
+    score_user() # calling the function to show the score
+    ans = user_entry.get().lower()
+    if ans == collectionsOfImage[random_1]:
+           messagebox.showinfo("Great", "You got the right answer\n\t" + user_entry.get())
+           scoring() # calling the function to increment the score
+           Images_list() # everytime the condtion is true the new image will appear
+    else:
+        messagebox.askretrycancel("Wrong", "Try again")
+       
 def scoring():
     global score
     score+=1
