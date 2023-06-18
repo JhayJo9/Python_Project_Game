@@ -1,1 +1,2 @@
-collectionsOfImage = ['kirito','yato','tomioka','gojo','zerotwo','natsu','nezuko','akeno','ash','ayanokouji','denji','erina','hisoka','kurapika','kuroko','minato','rias','rimuru','sakuragi']
+score+=1
+    
