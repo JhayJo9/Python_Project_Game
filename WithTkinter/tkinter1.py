@@ -5,8 +5,6 @@ from random import randint
 gui = Tk()
 gui.title("Guessing Game")
 gui.geometry("600x600")
-
-
 def user_answer():
     ans = user_entry.get().lower()
     if ans == collectionsOfImage[random_1]:
@@ -22,7 +20,9 @@ def Images_list():
     global anime_images
     global anime  
     global collectionsOfImage
-    collectionsOfImage = ['kirito','yato','tomioka','gojo','zerotwo','natsu','nezuko','akeno','ash','ayanokouji','denji','erina','hisoka','kurapika','kuroko','minato','rias','rimuru','sakuragi']
+    collectionsOfImage = ['kirito','yato','tomioka','gojo','zerotwo','natsu','nezuko','akeno',
+                        'ash','ayanokouji','denji','erina','hisoka','kurapika','kuroko','minato',
+                        'rias','rimuru','sakuragi','asta','baki','eren','gintoki','gon','hinata','izumi','shin','takumi']
     random_1 = randint(0, len(collectionsOfImage)-1) # using random to randomize the images
     anime = "images/" + collectionsOfImage[random_1] + ".png"
     anime_images = ImageTk.PhotoImage(Image.open((anime))) # perfect
