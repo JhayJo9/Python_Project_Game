@@ -1,2 +1,2 @@
-score+=1
-    
+
+    lbl_score.config(bg="#001f3f")
