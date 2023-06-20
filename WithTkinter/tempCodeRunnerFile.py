@@ -1,2 +1,1 @@
-
-    lbl_score.config(bg="#001f3f")
+gui.geometry("600x600")

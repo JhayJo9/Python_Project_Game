@@ -4,10 +4,8 @@ from PIL import Image, ImageTk # python image library
 from random import randint
 from datetime import time
 gui = Tk()
-gui.title("Guessing Game")
 gui.geometry("600x600")
-score = 0
-second=30
+gui.mainloop()
 def timer_player():
     global second
     if second > 0:       
@@ -17,28 +15,31 @@ def timer_player():
         lbl_timer_player.config(bg="#001f3f")
         lbl_timer_player.after(1000,timer_player)
 
-""" def player_1():
-        global second, score
-        score = 0
-        second =0
+def player_1():
+       
         messagebox.showinfo("Time", "Your Time is ended")
         score_user() # note 
         btn_click()
         
 def player_2():
-    
+    global second, score
+    score = 0
+    second =0
     print(score)
     print(second)
     Images_list()
 def btn_click():
     btn_next = Button(frame_gui, text="Next",fg='#001f3f', font=("arial", 15), command=player_2)
-    btn_next.place(x=90,y=400) """
+    btn_next.place(x=90,y=400)
 def Images_list():
     next_imgs() # calling function to generate new images from list
-    score_user()
+    #score_user()
     if second == 30:
         timer_player()
     frame_gui.pack(fill="both",expand=1)
+    if second == 0:
+        player_1()
+        
     # create images and global variables to recognize the image
     global user_entry
     global random_1
@@ -92,14 +93,6 @@ def user_answer():
     else:
         messagebox.askretrycancel("Wrong", "Try again")     
 
-
-# create frame
 frame_gui = Frame(gui, width=400, height=550)
 frame_gui.config(bg="#001f3f")
-Images_list()
-# calling the function
-
-lbl1 = Label(frame_gui,text="Guess The Character Name", bg='#fff', fg='#39CCCC' ,font=("arial", 20,), pady=7)
-lbl1.config(bg="#001f3f")
-lbl1.place(x = 130, y=20)
 gui.mainloop()
