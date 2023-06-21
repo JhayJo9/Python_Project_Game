@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk # python image library
 from random import randint
-from datetime import time
+import os
 gui = Tk()
 gui.title("Guessing Game")
 gui.geometry("600x600")
@@ -76,17 +76,20 @@ def user_answer():
         Images_list()
     if attemtps == 0:
         messagebox.showinfo("!!!", "You are out of attempts\n\t" + str(attemtps))
-        #btn_retry = Button(frame_gui, text="Submit",fg='#001f3f',font=("arial", 15),command=play_again)
-        #btn_retry.place(x=170,y=490)
+        mess1 = messagebox.askyesno("Question", "Do you want to play again?")
+        if mess1 == True:
+            restart()
+# Restarts the Whole Window    
+def restart():
+    gui.destroy()
+    os.startfile("C:\\Users\\penal\\Desktop\\Python_Project_Game\\WithTkinter\\tkinter1.pyw")
 def play_again():
     Images_list()
-              
 # create frame
-frame_gui = Frame(gui, width=400, height=550)
+frame_gui = Frame(gui, width=600, height=600)
 frame_gui.config(bg="#001f3f")
 Images_list()
 # calling the function
-
 lbl1 = Label(frame_gui,text="Guess The Character Name", bg='#fff', fg='#39CCCC' ,font=("arial", 20,), pady=7)
 lbl1.config(bg="#001f3f")
 lbl1.place(x = 130, y=20)
