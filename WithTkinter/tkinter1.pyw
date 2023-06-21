@@ -7,7 +7,7 @@ gui = Tk()
 gui.title("Guessing Game")
 gui.geometry("600x600")
 score = 0
-second=30
+second = 30
 attemtps = 5
 
 def Images_list():
@@ -21,13 +21,15 @@ def Images_list():
     global anime  
     global collectionsOfImage
     # list of images
-    collectionsOfImage = ['kirito','yato','tomioka','gojo','zerotwo','natsu','nezuko','akeno']
-    """  'ash','ayanokouji','denji','erina','hisoka','kurapika','kuroko','minato',
+    collectionsOfImage = ['kirito','arthur','tomioka','gojo','zerotwo','natsu','nezuko','akeno',
+                        'ash','ayanokouji','denji','erina','hisoka','kurapika','kuroko','minato',
                         'rias','rimuru','sakuragi','asta','baki','eren','gintoki','gon','hinata',
                         'izumi','shin','takumi','arata','bakugo','haruki','hiro','issei','kaori',
                         'kousei','levi','lilith','mai','mikasa','mitsuha','sakura','yukihira','yuu'
-                        ,'garp','anya','law','hancock','kaido','luffy','nami','zoro','robin'] """
-    random_1 = randint(0, len(collectionsOfImage)-1) # using random to randomize the images
+                        ,'garp','anya','law','hancock','kaido','luffy','nami','zoro','robin'
+                        ,'ichigo','nacht','shinra','yato','aizen','bonolenov','chrollo','franklin',
+                        'guts','kalluto','kortopi','l','machi','nobunaga','pakunoda','phinks','shalnark']
+    random_1 = randint(0, len(collectionsOfImage)-1) # using random to randomize the images 
     anime = "images/" + collectionsOfImage[random_1] + ".png"
     anime_images = ImageTk.PhotoImage(Image.open((anime))) # perfect
     anime_images1 = Label(frame_gui,image= anime_images)
@@ -36,7 +38,7 @@ def Images_list():
     user_entry = Entry(frame_gui,width=20, font=('Arial',18 ))
     user_entry.place(x = 170,y=445)
     # button next
-    btn_next = Button(frame_gui, text="Next",fg='#001f3f', font=("arial", 15), command=Images_list)
+    btn_next = Button(frame_gui, text="  Next  ",fg='#001f3f', font=("arial", 15), command=Images_list)
     btn_next.place(x=260,y=490)
     # button to check the user input
     btn_ans = Button(frame_gui, text="Submit",fg='#001f3f',font=("arial", 15),command=user_answer)
@@ -52,8 +54,10 @@ def score_user():
     lbl_score = Label(frame_gui, text=("Score : "+ str(score)) ,fg='#39CCCC',bg='#fff', font=("arial", 15))
     lbl_score.config(bg="#001f3f")
     lbl_score.place(x=350,y=495)
+    
     lbl_attemps = Label(frame_gui, text="Your attempts : " + str(attemtps),fg='#39CCCC',bg='#fff', font=("arial", 15))
-    lbl_attemps.place(x= 260, y= 570)
+    lbl_attemps.place(x = 165, y= 550)
+    lbl_attemps.config(bg="#001f3f")
 def scoring():
     global score
     score+=1
@@ -70,6 +74,8 @@ def user_answer():
            messagebox.showinfo("Great", "You got the right answer\n\t" + user_entry.get())
            scoring()# calling the function to increment the score
            Images_list() # everytime the condtion is true the new image will appear
+    elif ans == "":
+        messagebox.showwarning("Opsss", "Please enter name") 
     else:
         attempting()
         messagebox.askretrycancel("Wrong", "Try again")
