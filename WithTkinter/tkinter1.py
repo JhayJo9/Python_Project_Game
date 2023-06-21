@@ -8,36 +8,11 @@ gui.title("Guessing Game")
 gui.geometry("600x600")
 score = 0
 second=30
-def timer_player():
-    global second
-    if second > 0:       
-        second-=1
-        lbl_timer_player = Label(frame_gui, text=("Timer: " +str(second)),fg='#39CCCC',bg='#fff', font=("arial", 15))
-        lbl_timer_player.place(x=260,y=540)
-        lbl_timer_player.config(bg="#001f3f")
-        lbl_timer_player.after(1000,timer_player)
+attemtps = 5
 
-""" def player_1():
-        global second, score
-        score = 0
-        second =0
-        messagebox.showinfo("Time", "Your Time is ended")
-        score_user() # note 
-        btn_click()
-        
-def player_2():
-    
-    print(score)
-    print(second)
-    Images_list()
-def btn_click():
-    btn_next = Button(frame_gui, text="Next",fg='#001f3f', font=("arial", 15), command=player_2)
-    btn_next.place(x=90,y=400) """
 def Images_list():
     next_imgs() # calling function to generate new images from list
     score_user()
-    if second == 30:
-        timer_player()
     frame_gui.pack(fill="both",expand=1)
     # create images and global variables to recognize the image
     global user_entry
@@ -70,27 +45,44 @@ def Images_list():
 def next_imgs():
     for widget in frame_gui.winfo_children():
         widget.destroy()
-    timer_player()
-    frame_gui.pack_forget() 
+    frame_gui.pack_forget()
     # user score
 def score_user():
     global score
-    lbl_score = Label(frame_gui, text=("Score: "+ str(score)) ,fg='#39CCCC',bg='#fff', font=("arial", 15))
+    lbl_score = Label(frame_gui, text=("Score : "+ str(score)) ,fg='#39CCCC',bg='#fff', font=("arial", 15))
     lbl_score.config(bg="#001f3f")
     lbl_score.place(x=350,y=495)
+    lbl_attemps = Label(frame_gui, text="Your attempts : " + str(attemtps),fg='#39CCCC',bg='#fff', font=("arial", 15))
+    lbl_attemps.place(x= 260, y= 570)
 def scoring():
     global score
     score+=1
+def attempting():
+    global attemtps
+    attemtps-=1
     # user answer
 def user_answer():
+    
+    global score
    # calling the function to show the score
     ans = user_entry.get().lower()
     if ans == collectionsOfImage[random_1]:
            messagebox.showinfo("Great", "You got the right answer\n\t" + user_entry.get())
-           scoring() # calling the function to increment the score
-           Images_list() # everytime the condtion is true the new image will appear
-    else:
-        messagebox.askretrycancel("Wrong", "Try again")     
+           scoring()# calling the function to increment the score
+           #Images_list() # everytime the condtion is true the new image will appear
+           
+    if ans != collectionsOfImage[random_1]:
+        attempting()
+        messagebox.askretrycancel("Wrong", "Try again")
+       
+    if attemtps == 0:
+        lbl_attemps = Label(frame_gui, text="Out of attempts : " + str(attemtps),fg='#39CCCC',bg='#fff', font=("arial", 15))
+        lbl_attemps.place(x= 260, y= 570)
+        btn_retry = Button(frame_gui, text="Submit",fg='#001f3f',font=("arial", 15),command=play_again)
+        btn_retry.place(x=170,y=490)
+def play_again():
+    Images_list()
+              
 
 
 # create frame
