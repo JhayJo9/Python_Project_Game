@@ -69,22 +69,18 @@ def user_answer():
     if ans == collectionsOfImage[random_1]:
            messagebox.showinfo("Great", "You got the right answer\n\t" + user_entry.get())
            scoring()# calling the function to increment the score
-           #Images_list() # everytime the condtion is true the new image will appear
-           
-    if ans != collectionsOfImage[random_1]:
+           Images_list() # everytime the condtion is true the new image will appear
+    else:
         attempting()
         messagebox.askretrycancel("Wrong", "Try again")
-       
+        Images_list()
     if attemtps == 0:
-        lbl_attemps = Label(frame_gui, text="Out of attempts : " + str(attemtps),fg='#39CCCC',bg='#fff', font=("arial", 15))
-        lbl_attemps.place(x= 260, y= 570)
-        btn_retry = Button(frame_gui, text="Submit",fg='#001f3f',font=("arial", 15),command=play_again)
-        btn_retry.place(x=170,y=490)
+        messagebox.showinfo("!!!", "You are out of attempts\n\t" + str(attemtps))
+        #btn_retry = Button(frame_gui, text="Submit",fg='#001f3f',font=("arial", 15),command=play_again)
+        #btn_retry.place(x=170,y=490)
 def play_again():
     Images_list()
               
-
-
 # create frame
 frame_gui = Frame(gui, width=400, height=550)
 frame_gui.config(bg="#001f3f")
