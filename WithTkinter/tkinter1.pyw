@@ -29,6 +29,7 @@ def Images_list():
                         ,'garp','anya','law','hancock','kaido','luffy','nami','zoro','robin'
                         ,'ichigo','nacht','shinra','yato','aizen','bonolenov','chrollo','franklin',
                         'guts','kalluto','kortopi','l','machi','nobunaga','pakunoda','phinks','shalnark']
+    
     random_1 = randint(0, len(collectionsOfImage)-1) # using random to randomize the images 
     anime = "images/" + collectionsOfImage[random_1] + ".png"
     anime_images = ImageTk.PhotoImage(Image.open((anime))) # perfect
@@ -66,8 +67,6 @@ def attempting():
     attemtps-=1
     # user answer
 def user_answer():
-    
-    global score
    # calling the function to show the score
     ans = user_entry.get().lower()
     if ans == collectionsOfImage[random_1]:
