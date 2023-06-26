@@ -28,7 +28,7 @@ def Images_list():
                         'kousei','levi','lilith','mai','mikasa','mitsuha','sakura','yukihira','yuu'
                         ,'garp','anya','law','hancock','kaido','luffy','nami','zoro','robin'
                         ,'ichigo','nacht','shinra','yato','aizen','bonolenov','chrollo','franklin',
-                        'guts','kalluto','kortopi','l','machi','nobunaga','pakunoda','phinks','shalnark']
+                        'guts','kalluto','kortopi','l','machi','nobunaga','pakunoda','phinks','shalnark','lee']
     
     random_1 = randint(0, len(collectionsOfImage)-1) # using random to randomize the images 
     anime = "images/" + collectionsOfImage[random_1] + ".png"
@@ -88,8 +88,6 @@ def user_answer():
 def restart():
     gui.destroy()
     os.startfile("C:\\Users\\penal\\Desktop\\Python_Project_Game\\WithTkinter\\tkinter1.pyw")
-def play_again():
-    Images_list()
 # create frame
 frame_gui = Frame(gui, width=600, height=600)
 frame_gui.config(bg="#001f3f")
